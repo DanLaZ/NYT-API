@@ -1,0 +1,22 @@
+
+.my-header{
+    background-color: navy;
+    padding-top: 3px;
+    color: white;
+    height: 125px;
+    padding-top: 30px;
+    margin: 10px;
+}
+
+.card-header{
+    background-color: navy;
+    width:100%;
+    padding-top: 3px;
+    color: white;
+}
+
+.card{
+    padding: 10px;
+    border-color: navy;
+}
+

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Ny Times Search</title>
+</head>
+<body>
+  <div class="container">
+    <div class="my-header text-center">
+      <img src="images/newspaper.png" style="width: 5%;" alt="...">
+      <h5 style="display: inline;">New York Times Search</h5>
+    </div>
+  </div>
+  <br>
+  
+  <div class="container">
+    <div class= "card">
+      <div class="card-header inline">
+          <img src="images/grid2.svg" style="width: 5%;" alt="...">
+            Search Parameters
+          </div>
+
+        <form>
+
+          <label for="Search Term">Search Term:</label>
+          <br>
+          <input id="searchTerm" type="text"> 
+          <br>
+          <br>
+          <label for="Number of Records to Retrieve"> Number of Records to Retrieve:</label>
+          <br>
+          <select name="numberOfArticles">
+            <option id="num5" value="5">5</option>
+            <option id="num10" value="10">10</option>
+            <option id="num15" value="15">15</option>
+          </select>
+          <br>
+          <br>
+          <label for="Start Year">Start Year(Optional):</label>
+          <br>
+          <input id="startYear" type="text">
+          <br>
+          <br>
+          <label for="End Year">End Year(Optional):</label>
+          <br>
+          <input id="endYear" type="text">
+          <br>
+          <br>
+          <button id="searchButton" type="button" class="btn btn-secondary">Seach</button>
+          <button id="clearResults" type="button" class="btn btn-secondary">Secondary</button>
+        </form>
+      </div>
+    </div> 
+    
+    <br>
+    
+    <div class="container">    
+      <div class="card">
+        <div class="card-header inline">
+        <img src="images/grid.svg" style="width: 5%;" alt="...">
+          Top Articles
+        </div>
+        
+        <div class="card-body">
+      </div>
+    </div>
+  </div>
+  </div>  
+
+  <script type="text/javascript">
+    // This is our API key. Add your own API key between the ""
+    var APIKey = "VKlpxlqzV7Nn6Fdxd3us1hk5idb8t4SU";
+    var filter = "&facet_fields=source&facet=true&begin_date=20120101&end_date=20121231";
+
+    var search = $(this).attr("data-name");
+
+    // Here we are building the URL we need to query the database
+    var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + search + filter + "&api-key=" + APIKey;
+
+    // We then created an AJAX call
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+
+      // Create CODE HERE to Log the queryURL
+      console.log(queryURL);
+      // Create CODE HERE to log the resulting object
+      console.log(response);
+      console.log(response.response.docs);
+
+      for (var i = 0; i < response.response.docs.length; i++) {
+        console.log(response.response.docs[i].headline.main);
+        console.log(response.response.docs[i].byline.original);
+      }
+
+    });
+  </script>
+</body>
+</html>
