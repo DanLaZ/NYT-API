@@ -1,4 +1,3 @@
-
 .my-header{
     background-color: navy;
     padding-top: 3px;
@@ -14,9 +13,27 @@
     padding-top: 3px;
     color: white;
 }
-
 .card{
     padding: 10px;
     border-color: navy;
 }
 
+#searchTerm{
+    width: 100%;
+}
+
+#numberOfArticles{
+    width: 100%;
+}
+
+#startYear{
+    width: 100%;
+}
+
+#endYear{
+    width: 100%;
+}
+
+#articleDisplay{
+    width: 100%;
+}
